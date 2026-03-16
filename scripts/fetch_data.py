@@ -6,21 +6,67 @@ import os
 import json
 import requests
 import yfinance as yf
-from datetime import datetime, timedelta
+from datetime import datetime
 from pathlib import Path
 
-# 配置
+# 配置 - 国内城市，国外数据源(Open-Meteo支持全球)
 CITIES = [
-    {"name": "北京", "lat": 39.9042, "lon": 116.4074},
-    {"name": "上海", "lat": 31.2304, "lon": 121.4737},
-    {"name": "纽约", "lat": 40.7128, "lon": -74.0060},
+    {"name": "武汉市", "lat": 30.5928, "lon": 114.3055},
+    {"name": "东莞市", "lat": 23.0489, "lon": 113.7447},
+    {"name": "河南省信阳市光山县", "lat": 32.0090, "lon": 114.9190},
 ]
 
-STOCKS = {
-    "全球指数": ["^GSPC", "^DJI", "^IXIC", "^FTSE", "^N225"],
-    "加密货币": ["BTC-USD", "ETH-USD"],
-    "ETF": ["QQQ", "SPY", "ARKK"],
+# 全球指数
+GLOBAL_INDICES = {
+    "美国": [
+        {"symbol": "^GSPC", "name": "标普500"},
+        {"symbol": "^DJI", "name": "道琼斯"},
+        {"symbol": "^IXIC", "name": "纳斯达克"},
+    ],
+    "欧洲": [
+        {"symbol": "^FTSE", "name": "英国富时100"},
+        {"symbol": "^GDAXI", "name": "德国DAX"},
+        {"symbol": "^FCHI", "name": "法国CAC40"},
+    ],
+    "亚太": [
+        {"symbol": "^N225", "name": "日经225"},
+        {"symbol": "^HSI", "name": "恒生指数"},
+    ],
 }
+
+# 市场板块
+MARKET_SECTORS = {
+    "股票": [
+        {"symbol": "AAPL", "name": "苹果"},
+        {"symbol": "MSFT", "name": "微软"},
+        {"symbol": "GOOGL", "name": "谷歌"},
+        {"symbol": "TSLA", "name": "特斯拉"},
+    ],
+    "ETF": [
+        {"symbol": "SPY", "name": "标普500ETF"},
+        {"symbol": "QQQ", "name": "纳斯达克100ETF"},
+        {"symbol": "ARKK", "name": "ARK创新ETF"},
+        {"symbol": "VTI", "name": "全美股市ETF"},
+    ],
+    "加密货币": [
+        {"symbol": "BTC-USD", "name": "比特币"},
+        {"symbol": "ETH-USD", "name": "以太坊"},
+    ],
+    "宏观": [
+        {"symbol": "GC=F", "name": "黄金"},
+        {"symbol": "CL=F", "name": "原油"},
+        {"symbol": "DX-Y.NYB", "name": "美元指数"},
+    ],
+}
+
+# 涨幅榜（示例热门股）
+TOP_GAINERS = [
+    {"symbol": "NVDA", "name": "英伟达"},
+    {"symbol": "AMD", "name": "AMD"},
+    {"symbol": "META", "name": "Meta"},
+    {"symbol": "AMZN", "name": "亚马逊"},
+    {"symbol": "NFLX", "name": "奈飞"},
+]
 
 NEWS_API_KEY = os.getenv("NEWS_API_KEY", "")
 OUTPUT_DIR = Path("site")
@@ -28,7 +74,7 @@ OUTPUT_DIR.mkdir(exist_ok=True)
 
 
 def fetch_weather():
-    """获取天气数据"""
+    """获取天气数据 - 使用 Open-Meteo (国外免费数据源)"""
     weather_data = []
     for city in CITIES:
         try:
@@ -48,42 +94,39 @@ def fetch_weather():
                 }
             })
         except Exception as e:
-            print(f"Weather error for {city['name']}: {e}")
+            print(f"天气获取失败 {city['name']}: {e}")
     return weather_data
 
 
-def fetch_stocks():
+def fetch_stock_data(symbols_list):
     """获取股票数据"""
-    result = {}
-    for category, symbols in STOCKS.items():
-        category_data = []
-        for symbol in symbols:
-            try:
-                ticker = yf.Ticker(symbol)
-                hist = ticker.history(period="5d")
-                if len(hist) < 2:
-                    continue
-                    
-                current = hist["Close"].iloc[-1]
-                prev = hist["Close"].iloc[-2]
-                change = (current - prev) / prev * 100
+    result = []
+    for item in symbols_list:
+        try:
+            ticker = yf.Ticker(item["symbol"])
+            hist = ticker.history(period="5d")
+            if len(hist) < 2:
+                continue
                 
-                category_data.append({
-                    "symbol": symbol,
-                    "name": ticker.info.get("shortName", symbol),
-                    "price": round(current, 2),
-                    "change": round(change, 2),
-                })
-            except Exception as e:
-                print(f"Stock error for {symbol}: {e}")
-        result[category] = category_data
+            current = hist["Close"].iloc[-1]
+            prev = hist["Close"].iloc[-2]
+            change = (current - prev) / prev * 100
+            
+            result.append({
+                "symbol": item["symbol"],
+                "name": item["name"],
+                "price": round(current, 2),
+                "change": round(change, 2),
+            })
+        except Exception as e:
+            print(f"股票获取失败 {item['symbol']}: {e}")
     return result
 
 
 def fetch_news():
-    """获取新闻数据"""
+    """获取热点资讯"""
     if not NEWS_API_KEY:
-        return {"error": "NEWS_API_KEY not configured"}
+        return {"error": "NEWS_API_KEY 未配置"}
     
     try:
         url = f"https://newsapi.org/v2/top-headlines?category=business&language=en&pageSize=10&apiKey={NEWS_API_KEY}"
@@ -107,17 +150,18 @@ def generate_report():
     """生成完整报告"""
     report = {
         "generated_at": datetime.now().isoformat(),
-        "date": datetime.now().strftime("%Y-%m-%d"),
+        "date": datetime.now().strftime("%Y年%m月%d日"),
         "weather": fetch_weather(),
-        "markets": fetch_stocks(),
+        "global_indices": {k: fetch_stock_data(v) for k, v in GLOBAL_INDICES.items()},
+        "market_sectors": {k: fetch_stock_data(v) for k, v in MARKET_SECTORS.items()},
+        "top_gainers": fetch_stock_data(TOP_GAINERS),
         "news": fetch_news(),
     }
     
-    # 保存 JSON 数据
     with open(OUTPUT_DIR / "data.json", "w", encoding="utf-8") as f:
         json.dump(report, f, ensure_ascii=False, indent=2)
     
-    print(f"Report generated: {OUTPUT_DIR / 'data.json'}")
+    print(f"报告已生成: {OUTPUT_DIR / 'data.json'}")
     return report
 
 

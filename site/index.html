@@ -7,116 +7,137 @@
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: #0f172a;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
             color: #e2e8f0;
             min-height: 100vh;
             padding: 20px;
         }
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
         }
         .header {
             text-align: center;
-            padding: 30px 0;
-            border-bottom: 1px solid #334155;
+            padding: 40px 0;
             margin-bottom: 30px;
         }
         .header h1 {
-            font-size: 2.5rem;
-            background: linear-gradient(135deg, #60a5fa, #a78bfa);
+            font-size: 2.8rem;
+            background: linear-gradient(135deg, #60a5fa, #a78bfa, #f472b6);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
+            font-weight: 700;
         }
         .header .date {
             color: #94a3b8;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
+            letter-spacing: 1px;
         }
-        .grid {
+        .dashboard {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 24px;
         }
         .card {
-            background: #1e293b;
-            border-radius: 16px;
-            padding: 24px;
-            border: 1px solid #334155;
-            transition: transform 0.2s, box-shadow 0.2s;
+            background: rgba(30, 41, 59, 0.8);
+            border-radius: 20px;
+            padding: 28px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
         }
         .card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+            border-color: rgba(96, 165, 250, 0.3);
         }
         .card-title {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             font-weight: 600;
-            margin-bottom: 16px;
+            margin-bottom: 20px;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
+        /* 今日天气 */
         .weather-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-            gap: 12px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
         }
         .weather-item {
-            background: #0f172a;
-            padding: 16px;
-            border-radius: 12px;
+            background: rgba(15, 23, 42, 0.6);
+            padding: 20px 16px;
+            border-radius: 16px;
             text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
         .weather-city {
-            font-size: 0.9rem;
-            color: #94a3b8;
-            margin-bottom: 8px;
-        }
-        .weather-temp {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: #60a5fa;
-        }
-        .weather-range {
-            font-size: 0.85rem;
-            color: #64748b;
-            margin-top: 4px;
-        }
-        .market-section {
-            margin-bottom: 20px;
-        }
-        .market-section:last-child {
-            margin-bottom: 0;
-        }
-        .market-title {
-            font-size: 0.9rem;
+            font-size: 1rem;
             color: #94a3b8;
             margin-bottom: 12px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+            font-weight: 500;
         }
-        .stock-list {
+        .weather-temp {
+            font-size: 2.2rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #60a5fa, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .weather-range {
+            font-size: 0.9rem;
+            color: #64748b;
+            margin-top: 8px;
+        }
+        /* 全球指数 */
+        .indices-tabs {
             display: flex;
-            flex-direction: column;
-            gap: 10px;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+        .tab-btn {
+            padding: 6px 14px;
+            border-radius: 20px;
+            background: rgba(255,255,255,0.05);
+            border: none;
+            color: #94a3b8;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .tab-btn.active {
+            background: linear-gradient(135deg, #60a5fa, #a78bfa);
+            color: white;
+        }
+        /* 股票列表通用 */
+        .stock-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
         }
         .stock-item {
+            background: rgba(15, 23, 42, 0.5);
+            padding: 16px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 12px 16px;
-            background: #0f172a;
-            border-radius: 10px;
         }
         .stock-info {
             display: flex;
             flex-direction: column;
+            gap: 4px;
         }
         .stock-symbol {
             font-weight: 600;
             font-size: 1rem;
+            color: #f1f5f9;
         }
         .stock-name {
             font-size: 0.8rem;
@@ -128,32 +149,82 @@
         .stock-value {
             font-size: 1.1rem;
             font-weight: 600;
+            color: #f1f5f9;
         }
         .stock-change {
             font-size: 0.85rem;
-            font-weight: 500;
+            font-weight: 600;
+            margin-top: 4px;
         }
-        .stock-change.up { color: #4ade80; }
+        .stock-change.up { color: #34d399; }
         .stock-change.down { color: #f87171; }
+        /* 市场板块 */
+        .sector-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+        .sector-box {
+            background: rgba(15, 23, 42, 0.5);
+            padding: 16px;
+            border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .sector-title {
+            font-size: 0.9rem;
+            color: #94a3b8;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .sector-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            font-size: 0.9rem;
+        }
+        .sector-item:not(:last-child) {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+        }
+        /* 热榜 */
         .news-list {
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 14px;
         }
         .news-item {
-            padding: 14px;
-            background: #0f172a;
-            border-radius: 10px;
+            padding: 16px;
+            background: rgba(15, 23, 42, 0.5);
+            border-radius: 12px;
             border-left: 3px solid #60a5fa;
+            transition: all 0.2s;
+        }
+        .news-item:hover {
+            background: rgba(15, 23, 42, 0.8);
+            transform: translateX(4px);
+        }
+        .news-rank {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            background: linear-gradient(135deg, #60a5fa, #a78bfa);
+            border-radius: 6px;
+            text-align: center;
+            line-height: 24px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-right: 10px;
         }
         .news-title {
             font-size: 0.95rem;
             line-height: 1.5;
-            margin-bottom: 6px;
+            display: flex;
+            align-items: flex-start;
         }
         .news-title a {
             color: #e2e8f0;
             text-decoration: none;
+            flex: 1;
         }
         .news-title a:hover {
             color: #60a5fa;
@@ -161,34 +232,90 @@
         .news-meta {
             font-size: 0.8rem;
             color: #64748b;
-            display: flex;
-            gap: 12px;
+            margin-top: 8px;
+            margin-left: 34px;
         }
-        .loading {
-            text-align: center;
-            padding: 60px;
+        /* 涨幅榜 */
+        .gainer-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .gainer-item {
+            display: flex;
+            align-items: center;
+            padding: 14px 16px;
+            background: rgba(15, 23, 42, 0.5);
+            border-radius: 12px;
+        }
+        .gainer-rank {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-right: 14px;
+        }
+        .gainer-rank.top3 {
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            color: #0f172a;
+        }
+        .gainer-rank.normal {
+            background: rgba(255, 255, 255, 0.1);
+            color: #94a3b8;
+        }
+        .gainer-info {
+            flex: 1;
+        }
+        .gainer-name {
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+        .gainer-symbol {
+            font-size: 0.8rem;
             color: #64748b;
         }
+        .gainer-change {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #34d399;
+        }
+        /* 加载和错误 */
+        .loading {
+            text-align: center;
+            padding: 80px;
+            color: #64748b;
+            font-size: 1.1rem;
+        }
         .error {
-            background: #450a0a;
-            border: 1px solid #dc2626;
+            background: rgba(220, 38, 38, 0.2);
+            border: 1px solid rgba(220, 38, 38, 0.5);
             color: #fca5a5;
             padding: 16px;
-            border-radius: 10px;
+            border-radius: 12px;
             text-align: center;
         }
         .footer {
             text-align: center;
-            padding: 40px 0 20px;
+            padding: 50px 0 30px;
             color: #64748b;
             font-size: 0.9rem;
         }
         @media (max-width: 768px) {
-            .grid {
+            .dashboard {
+                grid-template-columns: 1fr;
+            }
+            .weather-grid {
+                grid-template-columns: 1fr;
+            }
+            .stock-grid, .sector-grid {
                 grid-template-columns: 1fr;
             }
             .header h1 {
-                font-size: 1.8rem;
+                font-size: 2rem;
             }
         }
     </style>
@@ -205,16 +332,19 @@
         </div>
         
         <div class="footer">
-            数据来源: Open-Meteo · Yahoo Finance · NewsAPI<br>
-            自动生成于 <span id="generated"></span>
+            数据来源：Open-Meteo · Yahoo Finance · NewsAPI<br>
+            每日自动生成 · <span id="generated"></span>
         </div>
     </div>
 
     <script>
+        let currentData = null;
+
         async function loadData() {
             try {
                 const response = await fetch('data.json?t=' + Date.now());
                 const data = await response.json();
+                currentData = data;
                 render(data);
             } catch (err) {
                 document.getElementById('content').innerHTML = 
@@ -225,24 +355,27 @@
         function render(data) {
             document.getElementById('date').textContent = data.date;
             document.getElementById('generated').textContent = 
-                new Date(data.generated_at).toLocaleString('zh-CN');
+                '更新于 ' + new Date(data.generated_at).toLocaleString('zh-CN');
 
             const content = document.getElementById('content');
             content.innerHTML = `
-                <div class="grid">
+                <div class="dashboard">
                     ${renderWeather(data.weather)}
-                    ${renderMarkets(data.markets)}
+                    ${renderGlobalIndices(data.global_indices)}
                     ${renderNews(data.news)}
+                    ${renderMarketSectors(data.market_sectors)}
+                    ${renderTopGainers(data.top_gainers)}
                 </div>
             `;
         }
 
+        // 今日天气
         function renderWeather(weather) {
             const items = weather.map(w => `
                 <div class="weather-item">
                     <div class="weather-city">${w.city}</div>
                     <div class="weather-temp">${w.current.temp}°C</div>
-                    <div class="weather-range">${w.today.min}° / ${w.today.max}°</div>
+                    <div class="weather-range">最高 ${w.today.max}° / 最低 ${w.today.min}°</div>
                 </div>
             `).join('');
 
@@ -254,69 +387,134 @@
             `;
         }
 
-        function renderMarkets(markets) {
-            const sections = Object.entries(markets).map(([category, stocks]) => {
-                const stockItems = stocks.map(s => {
-                    const changeClass = s.change >= 0 ? 'up' : 'down';
-                    const changeSign = s.change >= 0 ? '+' : '';
-                    return `
-                        <div class="stock-item">
-                            <div class="stock-info">
-                                <span class="stock-symbol">${s.symbol}</span>
-                                <span class="stock-name">${s.name}</span>
-                            </div>
-                            <div class="stock-price">
-                                <div class="stock-value">$${s.price}</div>
-                                <div class="stock-change ${changeClass}">${changeSign}${s.change}%</div>
-                            </div>
-                        </div>
-                    `;
-                }).join('');
+        // 全球指数
+        function renderGlobalIndices(indices) {
+            const regions = Object.keys(indices);
+            const tabs = regions.map((r, i) => 
+                `<button class="tab-btn ${i === 0 ? 'active' : ''}" onclick="switchTab('${r}')">${r}</button>`
+            ).join('');
 
-                return `
-                    <div class="market-section">
-                        <div class="market-title">${category}</div>
-                        <div class="stock-list">${stockItems}</div>
-                    </div>
-                `;
+            const content = regions.map(region => {
+                const stocks = indices[region] || [];
+                const items = stocks.map(s => renderStockItem(s)).join('');
+                return `<div class="tab-content" id="tab-${region}" style="${region === regions[0] ? '' : 'display:none'}">${items}</div>`;
             }).join('');
 
             return `
                 <div class="card">
-                    <div class="card-title">📈 全球市场</div>
-                    ${sections}
+                    <div class="card-title">🌍 全球指数</div>
+                    <div class="indices-tabs">${tabs}</div>
+                    <div class="stock-grid">${content}</div>
                 </div>
             `;
         }
 
-        function renderNews(news) {
-            if (news.error) {
-                return `
-                    <div class="card">
-                        <div class="card-title">📰 热点资讯</div>
-                        <div class="error">${news.error}</div>
-                    </div>
-                `;
-            }
-
-            const items = news.articles.map(a => `
-                <div class="news-item">
-                    <div class="news-title">
-                        <a href="${a.url}" target="_blank">${a.title}</a>
-                    </div>
-                    <div class="news-meta">
-                        <span>${a.source}</span>
-                        <span>${a.published}</span>
-                    </div>
+        // 市场板块
+        function renderMarketSectors(sectors) {
+            const items = Object.entries(sectors).map(([name, stocks]) => `
+                <div class="sector-box">
+                    <div class="sector-title">${getSectorIcon(name)} ${name}</div>
+                    ${stocks.slice(0, 3).map(s => `
+                        <div class="sector-item">
+                            <span>${s.name}</span>
+                            <span class="${s.change >= 0 ? 'up' : 'down'}">${s.change >= 0 ? '+' : ''}${s.change}%</span>
+                        </div>
+                    `).join('')}
                 </div>
             `).join('');
 
             return `
                 <div class="card">
-                    <div class="card-title">📰 热点资讯</div>
+                    <div class="card-title">📈 市场板块</div>
+                    <div class="sector-grid">${items}</div>
+                </div>
+            `;
+        }
+
+        // 涨幅榜
+        function renderTopGainers(gainers) {
+            const sorted = [...gainers].sort((a, b) => b.change - a.change);
+            const items = sorted.map((g, i) => `
+                <div class="gainer-item">
+                    <div class="gainer-rank ${i < 3 ? 'top3' : 'normal'}">${i + 1}</div>
+                    <div class="gainer-info">
+                        <div class="gainer-name">${g.name}</div>
+                        <div class="gainer-symbol">${g.symbol}</div>
+                    </div>
+                    <div class="gainer-change">+${g.change}%</div>
+                </div>
+            `).join('');
+
+            return `
+                <div class="card">
+                    <div class="card-title">🔥 涨幅榜</div>
+                    <div class="gainer-list">${items}</div>
+                </div>
+            `;
+        }
+
+        // 热榜资讯
+        function renderNews(news) {
+            if (news.error) {
+                return `
+                    <div class="card">
+                        <div class="card-title">📰 热榜</div>
+                        <div class="error">${news.error}</div>
+                    </div>
+                `;
+            }
+
+            const items = news.articles.slice(0, 8).map((a, i) => `
+                <div class="news-item">
+                    <div class="news-title">
+                        <span class="news-rank">${i + 1}</span>
+                        <a href="${a.url}" target="_blank">${a.title}</a>
+                    </div>
+                    <div class="news-meta">${a.source} · ${a.published}</div>
+                </div>
+            `).join('');
+
+            return `
+                <div class="card">
+                    <div class="card-title">📰 热榜</div>
                     <div class="news-list">${items}</div>
                 </div>
             `;
+        }
+
+        // 辅助函数
+        function renderStockItem(s) {
+            const changeClass = s.change >= 0 ? 'up' : 'down';
+            const changeSign = s.change >= 0 ? '+' : '';
+            return `
+                <div class="stock-item">
+                    <div class="stock-info">
+                        <span class="stock-symbol">${s.symbol}</span>
+                        <span class="stock-name">${s.name}</span>
+                    </div>
+                    <div class="stock-price">
+                        <div class="stock-value">${s.price}</div>
+                        <div class="stock-change ${changeClass}">${changeSign}${s.change}%</div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function getSectorIcon(name) {
+            const icons = {
+                '股票': '📊',
+                'ETF': '💼',
+                '加密货币': '₿',
+                '宏观': '🌐'
+            };
+            return icons[name] || '📈';
+        }
+
+        function switchTab(region) {
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            document.querySelectorAll('.tab-content').forEach(content => content.style.display = 'none');
+            document.getElementById(`tab-${region}`).style.display = 'block';
         }
 
         loadData();
