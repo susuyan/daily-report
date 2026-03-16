@@ -1,38 +1,38 @@
 {
-  "generated_at": "2026-03-16T14:44:52.433929",
+  "generated_at": "2026-03-16T16:38:00.489101",
   "date": "2026年03月16日",
   "weather": [
     {
       "city": "武汉市",
       "current": {
-        "temp": 9.8,
-        "humidity": 96
+        "temp": 9.7,
+        "humidity": 97
       },
       "today": {
-        "max": 10.1,
-        "min": 8.3
+        "max": 11.4,
+        "min": 9.6
       }
     },
     {
       "city": "东莞市",
       "current": {
-        "temp": 19.6,
-        "humidity": 66
+        "temp": 19.2,
+        "humidity": 71
       },
       "today": {
-        "max": 26.2,
-        "min": 16.8
+        "max": 25.6,
+        "min": 17.4
       }
     },
     {
       "city": "河南省信阳市光山县",
       "current": {
-        "temp": 9.2,
-        "humidity": 93
+        "temp": 8.9,
+        "humidity": 95
       },
       "today": {
-        "max": 10.1,
-        "min": 7.4
+        "max": 10.4,
+        "min": 8.5
       }
     }
   ],
@@ -41,40 +41,40 @@
       {
         "symbol": "^GSPC",
         "name": "标普500",
-        "price": 6690.96,
-        "change": 0.89
+        "price": 6688.14,
+        "change": 0.84
       },
       {
         "symbol": "^DJI",
         "name": "道琼斯",
-        "price": 46879.54,
-        "change": 0.69
+        "price": 46865.65,
+        "change": 0.66
       },
       {
         "symbol": "^IXIC",
         "name": "纳斯达克",
-        "price": 22345.32,
-        "change": 1.09
+        "price": 22348.44,
+        "change": 1.1
       }
     ],
     "欧洲": [
       {
         "symbol": "^FTSE",
         "name": "英国富时100",
-        "price": 10368.88,
-        "change": 1.05
+        "price": 10329.57,
+        "change": 0.67
       },
       {
         "symbol": "^GDAXI",
         "name": "德国DAX",
-        "price": 23635.53,
-        "change": 0.8
+        "price": 23596.22,
+        "change": 0.64
       },
       {
         "symbol": "^FCHI",
         "name": "法国CAC40",
-        "price": 7950.0,
-        "change": 0.49
+        "price": 7939.62,
+        "change": 0.36
       }
     ],
     "亚太": [
@@ -97,46 +97,46 @@
       {
         "symbol": "AAPL",
         "name": "苹果",
-        "price": 253.15,
-        "change": 1.21
+        "price": 252.43,
+        "change": 0.92
       },
       {
         "symbol": "MSFT",
         "name": "微软",
-        "price": 397.28,
-        "change": 0.44
+        "price": 398.5,
+        "change": 0.75
       },
       {
         "symbol": "GOOGL",
         "name": "谷歌",
-        "price": 304.04,
-        "change": 0.58
+        "price": 303.78,
+        "change": 0.5
       },
       {
         "symbol": "TSLA",
         "name": "特斯拉",
-        "price": 400.56,
-        "change": 2.39
+        "price": 397.0,
+        "change": 1.48
       }
     ],
     "宏观": [
       {
         "symbol": "GLD",
         "name": "黄金",
-        "price": 459.33,
-        "change": -0.33
+        "price": 457.75,
+        "change": -0.67
       },
       {
         "symbol": "USO",
         "name": "原油",
-        "price": 117.37,
-        "change": -2.1
+        "price": 118.07,
+        "change": -1.52
       },
       {
         "symbol": "UUP",
         "name": "美元指数",
         "price": 27.76,
-        "change": -0.47
+        "change": -0.45
       }
     ]
   },
@@ -144,35 +144,85 @@
     {
       "symbol": "NVDA",
       "name": "英伟达",
-      "price": 183.64,
-      "change": 1.88
+      "price": 184.18,
+      "change": 2.18
     },
     {
       "symbol": "AMD",
       "name": "AMD",
-      "price": 197.26,
-      "change": 2.0
+      "price": 198.35,
+      "change": 2.56
     },
     {
       "symbol": "META",
       "name": "Meta",
-      "price": 628.3,
-      "change": 2.38
+      "price": 624.34,
+      "change": 1.73
     },
     {
       "symbol": "AMZN",
       "name": "亚马逊",
-      "price": 208.62,
-      "change": 0.46
+      "price": 209.01,
+      "change": 0.64
     },
     {
       "symbol": "NFLX",
       "name": "奈飞",
-      "price": 95.6,
-      "change": 0.3
+      "price": 94.94,
+      "change": -0.38
     }
   ],
   "news": {
-    "error": "NEWS_API_KEY 未配置"
+    "articles": [
+      {
+        "title": "Corruption erodes social trust more in democracies than in autocracies",
+        "source": "Hacker News",
+        "url": "https://www.frontiersin.org/journals/political-science/articles/10.3389/fpos.2026.1779810/full",
+        "published": "2026-03-16"
+      },
+      {
+        "title": "MoD sources warn Palantir role at heart of government is threat to UK security",
+        "source": "Hacker News",
+        "url": "https://www.thenerve.news/p/palantir-technologies-uk-mod-sources-government-data-insights-security-state-secrets",
+        "published": "2026-03-16"
+      },
+      {
+        "title": "My Journey to a reliable and enjoyable locally hosted voice assistant",
+        "source": "Hacker News",
+        "url": "https://community.home-assistant.io/t/my-journey-to-a-reliable-and-enjoyable-locally-hosted-voice-assistant/944860",
+        "published": "2026-03-16"
+      },
+      {
+        "title": "US Job Market Visualizer – Andrej Karpathy",
+        "source": "Hacker News",
+        "url": "https://karpathy.ai/jobs/",
+        "published": "2026-03-16"
+      },
+      {
+        "title": "Launch HN: Voygr (YC W26) – A better maps API for agents and AI apps",
+        "source": "Hacker News",
+        "url": "https://news.ycombinator.com/item?id=47401042",
+        "published": "2026-03-16"
+      },
+      {
+        "title": "I Love FreeBSD",
+        "source": "Hacker News",
+        "url": "https://it-notes.dragas.net/2026/03/16/why-i-love-freebsd/",
+        "published": "2026-03-16"
+      },
+      {
+        "title": "Canada's bill C-22 mandates mass metadata surveillance",
+        "source": "Hacker News",
+        "url": "https://www.michaelgeist.ca/2026/03/a-tale-of-two-bills-lawful-access-returns-with-changes-to-warrantless-access-but-dangerous-backdoor-surveillance-risks-remains/",
+        "published": "2026-03-15"
+      },
+      {
+        "title": "Even Faster Asin() Was Staring Right at Me",
+        "source": "Hacker News",
+        "url": "https://16bpp.net/blog/post/even-faster-asin-was-staring-right-at-me/",
+        "published": "2026-03-16"
+      }
+    ],
+    "source": "Hacker News (备用)"
   }
 }
