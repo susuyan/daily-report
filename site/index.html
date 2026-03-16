@@ -65,11 +65,13 @@
         }
         /* 今日天气 */
         .weather-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            display: flex;
+            flex-wrap: wrap;
             gap: 16px;
         }
         .weather-item {
+            flex: 1;
+            min-width: 140px;
             background: rgba(15, 23, 42, 0.6);
             padding: 20px 16px;
             border-radius: 16px;
@@ -77,10 +79,12 @@
             border: 1px solid rgba(255, 255, 255, 0.05);
         }
         .weather-city {
-            font-size: 1rem;
+            font-size: 0.9rem;
             color: #94a3b8;
             margin-bottom: 12px;
             font-weight: 500;
+            line-height: 1.4;
+            word-break: break-all;
         }
         .weather-temp {
             font-size: 2.2rem;
