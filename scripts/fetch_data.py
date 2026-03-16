@@ -44,23 +44,25 @@ MARKET_SECTORS = {
     ],
     "宏观": [
         {"symbol": "GLD", "name": "黄金"},
-        {"symbol": "USO", "name": "原油"},
+        {"symbol": "BNO", "name": "原油"},
         {"symbol": "UUP", "name": "美元指数"},
     ],
 }
 
-# 涨幅榜扩大到 Top 10
+# 涨幅榜扩大到 Top 10 (备选多一些防止失败)
 TOP_GAINERS = [
     {"symbol": "NVDA", "name": "英伟达"},
     {"symbol": "AMD", "name": "AMD"},
     {"symbol": "META", "name": "Meta"},
     {"symbol": "AMZN", "name": "亚马逊"},
-    {"symbol": "NFLX", "name": "奈飞"},
     {"symbol": "TSLA", "name": "特斯拉"},
     {"symbol": "CRM", "name": "Salesforce"},
     {"symbol": "UBER", "name": "Uber"},
     {"symbol": "COIN", "name": "Coinbase"},
     {"symbol": "PLTR", "name": "Palantir"},
+    {"symbol": "ABNB", "name": "Airbnb"},
+    {"symbol": "SNOW", "name": "Snowflake"},
+    {"symbol": "RBLX", "name": "Roblox"},
 ]
 
 NEWS_API_KEY = os.getenv("NEWS_API_KEY", "")
@@ -101,8 +103,11 @@ def fetch_stock_with_history(item):
         if len(hist) < 2:
             return None
         
-        # 计算近5日涨跌幅用于迷你图
-        prices = hist["Close"].tolist()
+        # 清理数据，移除 NaN
+        prices = [p for p in hist["Close"].tolist() if p == p]  # NaN != NaN
+        if len(prices) < 2:
+            return None
+        
         current = prices[-1]
         prev = prices[-2]
         change = (current - prev) / prev * 100

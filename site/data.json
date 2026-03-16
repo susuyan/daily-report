@@ -1,142 +1,262 @@
 {
-  "generated_at": "2026-03-16T16:38:00.489101",
+  "generated_at": "2026-03-16T16:42:10.514742",
   "date": "2026年03月16日",
   "weather": [
     {
       "city": "武汉市",
       "current": {
-        "temp": 9.7,
+        "temp": 10,
         "humidity": 97
       },
       "today": {
-        "max": 11.4,
-        "min": 9.6
+        "max": 11,
+        "min": 10
       }
     },
     {
       "city": "东莞市",
       "current": {
-        "temp": 19.2,
+        "temp": 19,
         "humidity": 71
       },
       "today": {
-        "max": 25.6,
-        "min": 17.4
+        "max": 26,
+        "min": 17
       }
     },
     {
       "city": "河南省信阳市光山县",
       "current": {
-        "temp": 8.9,
+        "temp": 9,
         "humidity": 95
       },
       "today": {
-        "max": 10.4,
-        "min": 8.5
+        "max": 10,
+        "min": 8
       }
     }
   ],
   "global_indices": {
     "美国": [
       {
-        "symbol": "^GSPC",
+        "symbol": "SPY",
         "name": "标普500",
-        "price": 6688.14,
-        "change": 0.84
+        "price": 668.33,
+        "change": 0.91,
+        "sparkline": [
+          100,
+          93,
+          88,
+          24,
+          0,
+          38
+        ]
       },
       {
-        "symbol": "^DJI",
+        "symbol": "DIA",
         "name": "道琼斯",
-        "price": 46865.65,
-        "change": 0.66
+        "price": 469.81,
+        "change": 0.73,
+        "sparkline": [
+          100,
+          98,
+          73,
+          9,
+          0,
+          30
+        ]
       },
       {
-        "symbol": "^IXIC",
-        "name": "纳斯达克",
-        "price": 22348.44,
-        "change": 1.1
+        "symbol": "QQQ",
+        "name": "纳斯达克100",
+        "price": 600.32,
+        "change": 1.11,
+        "sparkline": [
+          100,
+          100,
+          99,
+          25,
+          0,
+          47
+        ]
       }
     ],
     "欧洲": [
       {
-        "symbol": "^FTSE",
-        "name": "英国富时100",
-        "price": 10329.57,
-        "change": 0.67
+        "symbol": "VGK",
+        "name": "欧洲ETF",
+        "price": 83.22,
+        "change": 1.3,
+        "sparkline": [
+          99,
+          100,
+          94,
+          45,
+          0,
+          42
+        ]
       },
       {
-        "symbol": "^GDAXI",
-        "name": "德国DAX",
-        "price": 23596.22,
-        "change": 0.64
+        "symbol": "EWU",
+        "name": "英国ETF",
+        "price": 45.93,
+        "change": 1.32,
+        "sparkline": [
+          89,
+          100,
+          91,
+          51,
+          0,
+          55
+        ]
       },
       {
-        "symbol": "^FCHI",
-        "name": "法国CAC40",
-        "price": 7939.62,
-        "change": 0.36
+        "symbol": "EWG",
+        "name": "德国ETF",
+        "price": 40.39,
+        "change": 1.38,
+        "sparkline": [
+          99,
+          100,
+          76,
+          40,
+          0,
+          44
+        ]
       }
     ],
     "亚太": [
       {
-        "symbol": "^N225",
-        "name": "日经225",
-        "price": 53751.15,
-        "change": -0.13
+        "symbol": "EWJ",
+        "name": "日本ETF",
+        "price": 84.75,
+        "change": 1.66,
+        "sparkline": [
+          74,
+          100,
+          76,
+          27,
+          0,
+          45
+        ]
       },
       {
-        "symbol": "^HSI",
-        "name": "恒生指数",
-        "price": 25834.02,
-        "change": 1.45
+        "symbol": "EWH",
+        "name": "香港ETF",
+        "price": 22.96,
+        "change": 0.88,
+        "sparkline": [
+          64,
+          93,
+          100,
+          20,
+          0,
+          34
+        ]
+      },
+      {
+        "symbol": "ASHR",
+        "name": "沪深300",
+        "price": 33.6,
+        "change": 0.21,
+        "sparkline": [
+          0,
+          38,
+          100,
+          27,
+          11,
+          27
+        ]
       }
     ]
   },
   "market_sectors": {
-    "股票": [
+    "科技股": [
       {
         "symbol": "AAPL",
         "name": "苹果",
-        "price": 252.43,
-        "change": 0.92
+        "price": 252.71,
+        "change": 1.04,
+        "sparkline": [
+          91,
+          100,
+          100,
+          53,
+          0,
+          24
+        ]
       },
       {
         "symbol": "MSFT",
         "name": "微软",
-        "price": 398.5,
-        "change": 0.75
+        "price": 398.81,
+        "change": 0.82,
+        "sparkline": [
+          100,
+          74,
+          67,
+          46,
+          0,
+          24
+        ]
       },
       {
         "symbol": "GOOGL",
         "name": "谷歌",
-        "price": 303.78,
-        "change": 0.5
+        "price": 303.84,
+        "change": 0.52,
+        "sparkline": [
+          64,
+          74,
+          100,
+          20,
+          0,
+          24
+        ]
       },
       {
-        "symbol": "TSLA",
-        "name": "特斯拉",
-        "price": 397.0,
-        "change": 1.48
+        "symbol": "NVDA",
+        "name": "英伟达",
+        "price": 184.27,
+        "change": 2.23,
+        "sparkline": [
+          41,
+          78,
+          100,
+          50,
+          0,
+          70
+        ]
       }
     ],
     "宏观": [
       {
         "symbol": "GLD",
         "name": "黄金",
-        "price": 457.75,
-        "change": -0.67
-      },
-      {
-        "symbol": "USO",
-        "name": "原油",
-        "price": 118.07,
-        "change": -1.52
+        "price": 458.08,
+        "change": -0.6,
+        "sparkline": [
+          73,
+          100,
+          92,
+          45,
+          14,
+          0
+        ]
       },
       {
         "symbol": "UUP",
         "name": "美元指数",
-        "price": 27.76,
-        "change": -0.45
+        "price": 27.75,
+        "change": -0.48,
+        "sparkline": [
+          2,
+          0,
+          23,
+          52,
+          100,
+          69
+        ]
       }
     ]
   },
@@ -144,32 +264,128 @@
     {
       "symbol": "NVDA",
       "name": "英伟达",
-      "price": 184.18,
-      "change": 2.18
+      "price": 184.27,
+      "change": 2.23,
+      "sparkline": [
+        41,
+        78,
+        100,
+        50,
+        0,
+        70
+      ]
     },
     {
       "symbol": "AMD",
       "name": "AMD",
-      "price": 198.35,
-      "change": 2.56
+      "price": 198.6,
+      "change": 2.69,
+      "sparkline": [
+        81,
+        86,
+        100,
+        38,
+        0,
+        46
+      ]
     },
     {
       "symbol": "META",
       "name": "Meta",
-      "price": 624.34,
-      "change": 1.73
+      "price": 624.75,
+      "change": 1.8,
+      "sparkline": [
+        82,
+        98,
+        100,
+        59,
+        0,
+        27
+      ]
     },
     {
       "symbol": "AMZN",
       "name": "亚马逊",
-      "price": 209.01,
-      "change": 0.64
+      "price": 209.43,
+      "change": 0.85,
+      "sparkline": [
+        87,
+        100,
+        75,
+        28,
+        0,
+        27
+      ]
     },
     {
-      "symbol": "NFLX",
-      "name": "奈飞",
-      "price": 94.94,
-      "change": -0.38
+      "symbol": "TSLA",
+      "name": "特斯拉",
+      "price": 397.56,
+      "change": 1.63,
+      "sparkline": [
+        45,
+        48,
+        100,
+        23,
+        0,
+        38
+      ]
+    },
+    {
+      "symbol": "CRM",
+      "name": "Salesforce",
+      "price": 197.71,
+      "change": 2.53,
+      "sparkline": [
+        92,
+        32,
+        20,
+        100,
+        0,
+        76
+      ]
+    },
+    {
+      "symbol": "UBER",
+      "name": "Uber",
+      "price": 74.47,
+      "change": 1.55,
+      "sparkline": [
+        57,
+        0,
+        100,
+        23,
+        37,
+        81
+      ]
+    },
+    {
+      "symbol": "COIN",
+      "name": "Coinbase",
+      "price": 200.9,
+      "change": 2.75,
+      "sparkline": [
+        85,
+        43,
+        70,
+        0,
+        30,
+        100
+      ]
+    },
+    {
+      "symbol": "PLTR",
+      "name": "Palantir",
+      "price": 152.37,
+      "change": 0.94,
+      "sparkline": [
+        100,
+        3,
+        12,
+        47,
+        0,
+        26
+      ]
     }
   ],
   "news": {
@@ -181,15 +397,9 @@
         "published": "2026-03-16"
       },
       {
-        "title": "MoD sources warn Palantir role at heart of government is threat to UK security",
+        "title": "MoD sources warn Palantir role at heart of government is threat to ...",
         "source": "Hacker News",
         "url": "https://www.thenerve.news/p/palantir-technologies-uk-mod-sources-government-data-insights-security-state-secrets",
-        "published": "2026-03-16"
-      },
-      {
-        "title": "My Journey to a reliable and enjoyable locally hosted voice assistant",
-        "source": "Hacker News",
-        "url": "https://community.home-assistant.io/t/my-journey-to-a-reliable-and-enjoyable-locally-hosted-voice-assistant/944860",
         "published": "2026-03-16"
       },
       {
@@ -199,15 +409,21 @@
         "published": "2026-03-16"
       },
       {
-        "title": "Launch HN: Voygr (YC W26) – A better maps API for agents and AI apps",
+        "title": "My Journey to a reliable and enjoyable locally hosted voice assistant",
         "source": "Hacker News",
-        "url": "https://news.ycombinator.com/item?id=47401042",
+        "url": "https://community.home-assistant.io/t/my-journey-to-a-reliable-and-enjoyable-locally-hosted-voice-assistant/944860",
         "published": "2026-03-16"
       },
       {
         "title": "I Love FreeBSD",
         "source": "Hacker News",
         "url": "https://it-notes.dragas.net/2026/03/16/why-i-love-freebsd/",
+        "published": "2026-03-16"
+      },
+      {
+        "title": "Launch HN: Voygr (YC W26) – A better maps API for agents and AI apps",
+        "source": "Hacker News",
+        "url": "https://news.ycombinator.com/item?id=47401042",
         "published": "2026-03-16"
       },
       {
@@ -220,6 +436,18 @@
         "title": "Even Faster Asin() Was Staring Right at Me",
         "source": "Hacker News",
         "url": "https://16bpp.net/blog/post/even-faster-asin-was-staring-right-at-me/",
+        "published": "2026-03-16"
+      },
+      {
+        "title": "Show HN: Hackerbrief – Top posts on Hacker News summarized daily",
+        "source": "Hacker News",
+        "url": "https://hackerbrief.vercel.app/",
+        "published": "2026-03-16"
+      },
+      {
+        "title": "Comparing Python Type Checkers: Typing Spec Conformance",
+        "source": "Hacker News",
+        "url": "https://pyrefly.org/blog/typing-conformance-comparison/",
         "published": "2026-03-16"
       }
     ],
