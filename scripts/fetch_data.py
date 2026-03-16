@@ -42,16 +42,6 @@ MARKET_SECTORS = {
         {"symbol": "GOOGL", "name": "谷歌"},
         {"symbol": "TSLA", "name": "特斯拉"},
     ],
-    "ETF": [
-        {"symbol": "SPY", "name": "标普500ETF"},
-        {"symbol": "QQQ", "name": "纳斯达克100ETF"},
-        {"symbol": "ARKK", "name": "ARK创新ETF"},
-        {"symbol": "VTI", "name": "全美股市ETF"},
-    ],
-    "加密货币": [
-        {"symbol": "BTC-USD", "name": "比特币"},
-        {"symbol": "ETH-USD", "name": "以太坊"},
-    ],
     "宏观": [
         {"symbol": "GC=F", "name": "黄金"},
         {"symbol": "CL=F", "name": "原油"},
