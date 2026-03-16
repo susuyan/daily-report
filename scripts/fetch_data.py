@@ -114,26 +114,51 @@ def fetch_stock_data(symbols_list):
 
 
 def fetch_news():
-    """获取热点资讯"""
-    if not NEWS_API_KEY:
-        return {"error": "NEWS_API_KEY 未配置"}
+    """获取热点资讯 - 优先 NewsAPI，备用 HackerNews"""
+    articles = []
     
+    # 尝试 NewsAPI
+    if NEWS_API_KEY:
+        try:
+            url = f"https://newsapi.org/v2/top-headlines?category=business&language=en&pageSize=10&apiKey={NEWS_API_KEY}"
+            resp = requests.get(url, timeout=10)
+            data = resp.json()
+            for article in data.get("articles", [])[:8]:
+                articles.append({
+                    "title": article.get("title", ""),
+                    "source": article.get("source", {}).get("name", ""),
+                    "url": article.get("url", ""),
+                    "published": article.get("publishedAt", "")[:10],
+                })
+            if articles:
+                return {"articles": articles}
+        except Exception as e:
+            print(f"NewsAPI error: {e}")
+    
+    # 备用：HackerNews Top Stories（无需 API Key）
     try:
-        url = f"https://newsapi.org/v2/top-headlines?category=business&language=en&pageSize=10&apiKey={NEWS_API_KEY}"
-        resp = requests.get(url, timeout=10)
-        data = resp.json()
+        hn_url = "https://hacker-news.firebaseio.com/v0/topstories.json"
+        top_ids = requests.get(hn_url, timeout=10).json()[:8]
         
-        articles = []
-        for article in data.get("articles", []):
-            articles.append({
-                "title": article.get("title", ""),
-                "source": article.get("source", {}).get("name", ""),
-                "url": article.get("url", ""),
-                "published": article.get("publishedAt", "")[:10],
-            })
-        return {"articles": articles}
+        for story_id in top_ids:
+            try:
+                story = requests.get(f"https://hacker-news.firebaseio.com/v0/item/{story_id}.json", timeout=5).json()
+                if story and story.get("title"):
+                    articles.append({
+                        "title": story.get("title"),
+                        "source": "Hacker News",
+                        "url": story.get("url", f"https://news.ycombinator.com/item?id={story_id}"),
+                        "published": datetime.fromtimestamp(story.get("time", 0)).strftime("%Y-%m-%d"),
+                    })
+            except:
+                continue
+        
+        if articles:
+            return {"articles": articles, "source": "Hacker News (备用)"}
     except Exception as e:
-        return {"error": str(e)}
+        print(f"HackerNews error: {e}")
+    
+    return {"error": "新闻获取失败，请配置 NEWS_API_KEY"}
 
 
 def generate_report():

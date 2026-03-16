@@ -467,6 +467,7 @@
                 `;
             }
 
+            const sourceBadge = news.source ? `<span style="color:#64748b;font-size:0.8rem;margin-left:8px">${news.source}</span>` : '';
             const items = news.articles.slice(0, 8).map((a, i) => `
                 <div class="news-item">
                     <div class="news-title">
@@ -479,7 +480,7 @@
 
             return `
                 <div class="card">
-                    <div class="card-title">📰 热榜</div>
+                    <div class="card-title">📰 热榜${sourceBadge}</div>
                     <div class="news-list">${items}</div>
                 </div>
             `;
