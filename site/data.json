@@ -1,0 +1,178 @@
+{
+  "generated_at": "2026-03-16T14:43:58.269013",
+  "date": "2026年03月16日",
+  "weather": [
+    {
+      "city": "武汉市",
+      "current": {
+        "temp": 9.8,
+        "humidity": 96
+      },
+      "today": {
+        "max": 10.1,
+        "min": 8.3
+      }
+    },
+    {
+      "city": "东莞市",
+      "current": {
+        "temp": 19.6,
+        "humidity": 66
+      },
+      "today": {
+        "max": 26.2,
+        "min": 16.8
+      }
+    },
+    {
+      "city": "河南省信阳市光山县",
+      "current": {
+        "temp": 9.2,
+        "humidity": 93
+      },
+      "today": {
+        "max": 10.1,
+        "min": 7.4
+      }
+    }
+  ],
+  "global_indices": {
+    "美国": [
+      {
+        "symbol": "^GSPC",
+        "name": "标普500",
+        "price": 6692.35,
+        "change": 0.91
+      },
+      {
+        "symbol": "^DJI",
+        "name": "道琼斯",
+        "price": 46886.53,
+        "change": 0.7
+      },
+      {
+        "symbol": "^IXIC",
+        "name": "纳斯达克",
+        "price": 22347.5,
+        "change": 1.1
+      }
+    ],
+    "欧洲": [
+      {
+        "symbol": "^FTSE",
+        "name": "英国富时100",
+        "price": 10372.03,
+        "change": 1.08
+      },
+      {
+        "symbol": "^GDAXI",
+        "name": "德国DAX",
+        "price": 23644.06,
+        "change": 0.84
+      },
+      {
+        "symbol": "^FCHI",
+        "name": "法国CAC40",
+        "price": 7950.86,
+        "change": 0.5
+      }
+    ],
+    "亚太": [
+      {
+        "symbol": "^N225",
+        "name": "日经225",
+        "price": 53751.15,
+        "change": -0.13
+      },
+      {
+        "symbol": "^HSI",
+        "name": "恒生指数",
+        "price": 25834.02,
+        "change": 1.45
+      }
+    ]
+  },
+  "market_sectors": {
+    "股票": [
+      {
+        "symbol": "AAPL",
+        "name": "苹果",
+        "price": 253.47,
+        "change": 1.34
+      },
+      {
+        "symbol": "MSFT",
+        "name": "微软",
+        "price": 397.17,
+        "change": 0.41
+      },
+      {
+        "symbol": "GOOGL",
+        "name": "谷歌",
+        "price": 304.18,
+        "change": 0.63
+      },
+      {
+        "symbol": "TSLA",
+        "name": "特斯拉",
+        "price": 400.41,
+        "change": 2.35
+      }
+    ],
+    "宏观": [
+      {
+        "symbol": "GLD",
+        "name": "黄金",
+        "price": 459.41,
+        "change": -0.31
+      },
+      {
+        "symbol": "USO",
+        "name": "原油",
+        "price": 117.19,
+        "change": -2.25
+      },
+      {
+        "symbol": "UUP",
+        "name": "美元指数",
+        "price": 27.75,
+        "change": -0.5
+      }
+    ]
+  },
+  "top_gainers": [
+    {
+      "symbol": "NVDA",
+      "name": "英伟达",
+      "price": 183.61,
+      "change": 1.86
+    },
+    {
+      "symbol": "AMD",
+      "name": "AMD",
+      "price": 197.11,
+      "change": 1.93
+    },
+    {
+      "symbol": "META",
+      "name": "Meta",
+      "price": 628.35,
+      "change": 2.39
+    },
+    {
+      "symbol": "AMZN",
+      "name": "亚马逊",
+      "price": 208.66,
+      "change": 0.48
+    },
+    {
+      "symbol": "NFLX",
+      "name": "奈飞",
+      "price": 95.57,
+      "change": 0.27
+    }
+  ],
+  "news": {
+    "error": "NEWS_API_KEY 未配置"
+  }
+}

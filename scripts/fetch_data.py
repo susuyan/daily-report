@@ -43,9 +43,9 @@ MARKET_SECTORS = {
         {"symbol": "TSLA", "name": "特斯拉"},
     ],
     "宏观": [
-        {"symbol": "GC=F", "name": "黄金"},
-        {"symbol": "CL=F", "name": "原油"},
-        {"symbol": "DX-Y.NYB", "name": "美元指数"},
+        {"symbol": "GLD", "name": "黄金"},
+        {"symbol": "USO", "name": "原油"},
+        {"symbol": "UUP", "name": "美元指数"},
     ],
 }
 
